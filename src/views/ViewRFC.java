@@ -82,6 +82,8 @@ public class ViewRFC extends javax.swing.JFrame {
         jLabel7.setForeground(new java.awt.Color(248, 241, 241));
         jLabel7.setText("Año");
 
+        js_dia.setModel(new javax.swing.SpinnerNumberModel(1, 1, 31, 1));
+
         jb_cacular.setBackground(new java.awt.Color(71, 81, 91));
         jb_cacular.setForeground(new java.awt.Color(255, 255, 255));
         jb_cacular.setText("Calcular");

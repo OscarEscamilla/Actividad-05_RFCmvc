@@ -119,10 +119,5 @@ public class ControllerRFC {
         viewrfc.setVisible(true);
         viewrfc.js_dia.setValue(1);
         
-    }
-    
-    
-   
-    
-    
+    } 
 }

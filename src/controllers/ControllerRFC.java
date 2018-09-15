@@ -8,6 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import models.ModelRFC;
 import views.ViewRFC;
+import extras.DataValidation;
 
 /**
  *
@@ -16,11 +17,13 @@ import views.ViewRFC;
 public class ControllerRFC {
     ModelRFC modelrfc;
     ViewRFC viewrfc;
+    DataValidation validar = new DataValidation();
 
     public ControllerRFC(ModelRFC modelRFC, ViewRFC viewRFC) {
         this.modelrfc = modelRFC;
         this.viewrfc = viewRFC;
         this.viewrfc.jb_cacular.addActionListener(actionListener);
+        this.viewrfc.jb_limpiar.addActionListener(actionListener);
         initComponents();
        
     }
@@ -30,10 +33,9 @@ public class ControllerRFC {
         @Override
         public void actionPerformed(ActionEvent e) {
             if(e.getSource()==viewrfc.jb_cacular){
-                calcularRFC();
-                
-       
-                
+                calcularRFC();   
+            }else if(e.getSource() == viewrfc.jb_limpiar){
+                limpiarCajas();
             }
         }
         
@@ -49,7 +51,7 @@ public class ControllerRFC {
         modelrfc.setAp_paterno(viewrfc.jtf_paterno.getText().toUpperCase());
         modelrfc.setAp_materno(viewrfc.jtf_materno.getText().toUpperCase());
         modelrfc.setDia(String.valueOf(viewrfc.js_dia.getValue()));
-        modelrfc.setAnio(viewrfc.jtf_anio.getText());
+        modelrfc.setAnio(String.valueOf(viewrfc.jtf_anio.getText()));
         
         if(modelrfc.getDia().length() <= 1){//si la cifra del dia tiene solo un digito agrega un 0 a la izquierda
             modelrfc.setDia("0"+String.valueOf(viewrfc.js_dia.getValue()));
@@ -103,8 +105,20 @@ public class ControllerRFC {
         viewrfc.jtf_rfc.setText(RFC);
     }
     
+    public void limpiarCajas(){
+        viewrfc.jtf_materno.setText("");
+        viewrfc.jtf_paterno.setText("");
+        viewrfc.jtf_nombre.setText("");
+        viewrfc.jtf_anio.setText("");
+        viewrfc.jtf_rfc.setText("");
+        viewrfc.jcb_mes.setSelectedIndex(0);
+        viewrfc.js_dia.setValue(1);
+    }
+    
     public final void initComponents(){
         viewrfc.setVisible(true);
+        viewrfc.js_dia.setValue(1);
+        
     }
     
     

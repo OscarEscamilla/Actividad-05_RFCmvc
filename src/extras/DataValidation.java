@@ -14,5 +14,22 @@ import javax.swing.JOptionPane;
 public class DataValidation {
     
     
+   
+    
+    public String validarAnio(String valor){
+        String resultado = null;
+        try{
+            if(valor.length() < 4){
+                resultado = valor;
+            }
+        }catch(NumberFormatException e){
+            JOptionPane.showMessageDialog(null, "Año no valido!!!");
+        }
+         return resultado;
+       
+ 
+    }
+    
+    
     
 }
